@@ -1,5 +1,5 @@
 const http = require('k6/http');
-const { sleep } = require('k6');
+const {sleep} = require('k6');
 
 const BASE_URL = 'http://localhost:3000';
 const routes = ['/index', '/moreload'];
@@ -10,15 +10,15 @@ const getRandomRoute = () => {
 
 const options = {
     stages: [
-        { duration: '1m', target: 10 }, // simulate ramp-up of traffic from 1 to 10 users over 1 minute.
-        { duration: '2m', target: 50 }, // stay at 50 users for 2 minutes
-        { duration: '2m', target: 100 }, // ramp-up to 100 users over 2 minutes
-        { duration: '2m', target: 150 }, // stay at 150 users for 2 minutes
-        { duration: '2m', target: 200 }, // ramp-up to 200 users over 2 minutes
-        { duration: '2m', target: 0 }, // ramp-down to 0 users over 2 minutes
+        {duration: '1m', target: 10}, // simulate ramp-up of traffic from 1 to 10 users over 1 minute.
+        {duration: '2m', target: 50}, // stay at 50 users for 2 minutes
+        {duration: '2m', target: 100}, // ramp-up to 100 users over 2 minutes
+        {duration: '2m', target: 150}, // stay at 150 users for 2 minutes
+        {duration: '2m', target: 200}, // ramp-up to 200 users over 2 minutes
+        {duration: '2m', target: 0}, // ramp-down to 0 users over 2 minutes
     ],
     thresholds: {
-        http_req_duration: ['p(95)<500'], // 95% of requests must complete below 500ms
+        http_req_duration: ['p(95)<500'],
     },
 };
 
